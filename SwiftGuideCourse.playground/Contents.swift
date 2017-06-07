@@ -318,113 +318,368 @@ import UIKit
 // 14 Функции
 // 1. простая функция, ничего не принимающая и ничего не возвращающая
 
-func sayHello() {
-    print("Hello")
-}
-
-sayHello()
-
-// 2. функция, принимающая один параметр
-
-func oneParam(param: Int) {
-    var param = param
-    param += 1
-}
-
-oneParam(param: 11)
-
-// 3. функция, не принимающая параметров, но возвращающая значение
-
-func returnValue() -> Int {
-    return 10
-}
-
-let a = returnValue()
-a
-
-// 4. функция, принимающая несколько параметров и возвращающая значение
-
-func giveMeYour(name: String, andSecondName: String) -> String {
-    return "Your full name is \(name) \(andSecondName)"
-}
-
-giveMeYour(name: "Ivan", andSecondName: "Akulov")
-
-
-// 5. функция, принимающая массив в качестве параметра и использующая вложенную функцию для работы
-func calcMoneyIn(array: [Int]) -> Int {
-    
-    var sum = 0
-    func sayMoney() {
-        print(sum)
-    }
-    
-    for item in array {
-        sum += item
-    }
-    
-    sayMoney()
-    return sum
-}
-
-calcMoneyIn(array: [1, 2, 3, 4, 5])
-
-// 6. функция, которая принимает переменное число параметров
-
-func findSum(ofIntegers integers: Int...) -> Int {
-    
-    var sum = 0
-    
-    for item in integers {
-        sum += item
-    }
-    return sum
-}
-
-findSum(ofIntegers: 1, 2, 3, 4, 5, 6)
-
-// 7. имена параметров функции
-
-func sum(_: Int) -> Int {
-    return 10
-}
-
-// 8. функция в качестве возвращаемого значения
-
-func whatToDo(missed: Bool) -> (Int) -> Int {
-    func missCountUp(input: Int) -> Int { return input + 1 }
-    func missCountDown(input: Int) -> Int { return input - 1 }
-    
-    return missed ? missCountUp : missCountDown
-}
-
-var missedCount = 0
-missedCount = whatToDo(missed: true)(missedCount)
-missedCount = whatToDo(missed: false)(missedCount)
+//func sayHello() {
+//    print("Hello")
+//}
+//
+//sayHello()
+//
+//// 2. функция, принимающая один параметр
+//
+//func oneParam(param: Int) {
+//    var param = param
+//    param += 1
+//}
+//
+//oneParam(param: 11)
+//
+//// 3. функция, не принимающая параметров, но возвращающая значение
+//
+//func returnValue() -> Int {
+//    return 10
+//}
+//
+//let a = returnValue()
+//a
+//
+//// 4. функция, принимающая несколько параметров и возвращающая значение
+//
+//func giveMeYour(name: String, andSecondName: String) -> String {
+//    return "Your full name is \(name) \(andSecondName)"
+//}
+//
+//giveMeYour(name: "Ivan", andSecondName: "Akulov")
+//
+//
+//// 5. функция, принимающая массив в качестве параметра и использующая вложенную функцию для работы
+//func calcMoneyIn(array: [Int]) -> Int {
+//    
+//    var sum = 0
+//    func sayMoney() {
+//        print(sum)
+//    }
+//    
+//    for item in array {
+//        sum += item
+//    }
+//    
+//    sayMoney()
+//    return sum
+//}
+//
+//calcMoneyIn(array: [1, 2, 3, 4, 5])
+//
+//// 6. функция, которая принимает переменное число параметров
+//
+//func findSum(ofIntegers integers: Int...) -> Int {
+//    
+//    var sum = 0
+//    
+//    for item in integers {
+//        sum += item
+//    }
+//    return sum
+//}
+//
+//findSum(ofIntegers: 1, 2, 3, 4, 5, 6)
+//
+//// 7. имена параметров функции
+//
+//func sum(_: Int) -> Int {
+//    return 10
+//}
+//
+//// 8. функция в качестве возвращаемого значения
+//
+//func whatToDo(missed: Bool) -> (Int) -> Int {
+//    func missCountUp(input: Int) -> Int { return input + 1 }
+//    func missCountDown(input: Int) -> Int { return input - 1 }
+//    
+//    return missed ? missCountUp : missCountDown
+//}
+//
+//var missedCount = 0
+//missedCount = whatToDo(missed: true)(missedCount)
+//missedCount = whatToDo(missed: false)(missedCount)
 
 // 15 Замыкания или клоужеры
+//func whateverFunc() {
+//    print("Hello, World!")
+//}
 
+//let closure = {
+//    print("Hello, World!")
+//}
+
+//func repeatThreeTimes(closure: () -> ()) {
+//    for _ in 0...2 {
+//        closure()
+//    }
+//}
+//
+//repeatThreeTimes {
+//    () -> () in
+//    print("Hello, World!")
+//}
+//
+//let unsortedArray = [123, 2, 32, 67, 8797, 432]
+//let sortedArray = unsortedArray.sorted {
+//    (number1: Int, number2: Int) -> Bool in
+//    return number1 < number2
+//}
 
 // 16 Кортежи
-
+//let one = 1
+//let two = 2
+//let three = 3
+//
+//(one, two, three)
+//
+//let boy = (5, "Sergey")
+//boy.0
+//boy.1
+//
+//let (first, second, third) = (1, 2, 3)
+//first
+//second
+//third
+//
+//let greenPencil = (color: "green", length: 20, weight: 4)
+//greenPencil.color
+//greenPencil.length
+//greenPencil.weight
+//let (greenColor, greenLength, greenWeight) = greenPencil
+//
+//let agesAndNames = ["Misha": 29, "Kostya": 90, "Mira": 30]
+//
+//var age = 0
+//var name = ""
+//
+//for (nameInD, ageInD) in agesAndNames {
+//    if age < ageInD {
+//        age = ageInD
+//        name = nameInD
+//    }
+//}
+//
+//age
+//name
 
 // 17 Опционалы
-
+//var fuel: Int?
+//fuel = 20
+////fuel = nil
+//
+////print("\(fuel!) liters left")
+//
+//if let avaliableFuel = fuel {
+//    print("\(avaliableFuel) liters left")
+//} else {
+//    print("no fuel data avaliable")
+//}
+//
+//func checkFuel() {
+//    guard let avaliableFuel = fuel else {
+//        print("no fuel data avaliable")
+//        return
+//    }
+//    print("\(avaliableFuel) liters left")
+//}
+//
+//checkFuel()
 
 // 18 Классы
-
+//class Human {
+//    var name = "Ivan"
+//    var age: Int? = 30
+//    var hairs = true
+//    
+//    func description() -> String {
+//        if let humanAge = age {
+//            return "Hello! My name is \(name) and I'm \(humanAge) years old!"
+//        } else {
+//            return "Hello! My name is \(name)!"
+//        }
+//    }
+//}
+//
+//var humanOne = Human()
+//humanOne.name = "Natasha"
+//humanOne.name
+//humanOne.description()
+//
+//let humanTwo = Human()
+//humanTwo.hairs = false
+//humanTwo.name = "Jack"
+//humanTwo
+//
+////humanOne = humanTwo
+//humanOne.name
+//
+//var array = [Human]()
+//array.append(humanOne)
+//array.append(humanTwo)
 
 // 19 Инициализаторы
-
+//class Human {
+//    var name: String
+//    var age: Int?
+//    var hairs: Bool
+//
+//    func description() -> String {
+//        if let humanAge = age {
+//            return "Hello! My name is \(name) and I'm \(humanAge) years old!"
+//        } else {
+//            return "Hello! My name is \(name)!"
+//        }
+//    }
+//    
+//    init() {
+//        name = "Ivan"
+//        hairs = true
+//    }
+//    
+//    init(name: String, age: Int?, hairs: Bool) {
+//        self.name = name
+//        self.age = age
+//        self.hairs = hairs
+//    }
+//}
+//
+//var human = Human()
+//human.age
+//human.name
+//human.hairs
+//
+//let human1 = Human(name: "Jason", age: 40, hairs: true)
 
 // 20 Наследование
-
+//class Human {
+//    // properties
+//    var name: String
+//    
+//    // method
+//    func tellAboutMe() -> String {
+//        return "Hello! My name is \(name)"
+//    }
+//    
+//    // initializer
+//    init(name: String) {
+//        self.name = name
+//    }
+//}
+//
+//class Child: Human {
+//    var toy = "Horse"
+//    
+//    override func tellAboutMe() -> String {
+//        let originalText = super.tellAboutMe()
+//        return "\(originalText) And I have a toy \(toy)"
+//    }
+//    
+//    init(toy: String, name: String) {
+//        self.toy = toy
+//        super.init(name: name)
+//    }
+//    
+//    override init(name: String) {
+//        self.toy = "Hummer"
+//        super.init(name: name)
+//    }
+//}
+//
+//let child = Child(name: "Klava")
+//child.tellAboutMe()
+//child.name
+//child.toy
+//
+//let child1 = Child(toy: "Dinosaur", name: "Max")
+//child1.tellAboutMe()
 
 // 21 Вычисляемые свойства
-
+//class Rectangular {
+//    let height: Int
+//    let width: Int
+//    let depth: Int
+//    
+//    var volume: Int {
+//        return height * width * depth
+//    }
+//    
+//    init(height: Int, width: Int, depth: Int) {
+//        self.height = height
+//        self.width = width
+//        self.depth = depth
+//    }
+//}
+//
+//let rect = Rectangular(height: 10, width: 12, depth: 13)
+//rect.volume
+//
+//class Person {
+//    var name: String
+//    var secondName: String
+//    
+//    var fullName: String {
+//        get {
+//            return name + " " + secondName
+//        }
+//        
+//        set {
+//            let array = newValue.components(separatedBy: " ")
+//            guard array.count > 1 else { return }
+//            name = array[0]
+//            secondName = array[1]
+//        }
+//    }
+//    
+//    init(name: String, secondName: String) {
+//        self.name = name
+//        self.secondName = secondName
+//    }
+//}
+//
+//let person = Person(name: "Ivan", secondName: "Akulov")
+//person.fullName
+//
+//person.name
+//person.secondName
+//person.fullName = "Zinaida Petrova"
+//person.name
+//person.secondName
 
 // 22 Свойства классов
-
+//class Car {
+//    // properties
+//    let products: Int
+//    let people: Int
+//    let pets: Int
+//    class var selfWeight: Int { return 1500 }
+//    class var maxWeight: Int { return 2000 }
+//    
+//    // computed property
+//    var totalWeight: Int {
+//        return products + people + pets + Car.selfWeight
+//    }
+//    
+//    // initializer
+//    init(products: Int, people: Int, pets: Int) {
+//        self.products = products
+//        self.people = people
+//        self.pets = pets
+//    }
+//}
+//
+//let car = Car(products: 30, people: 500, pets: 50)
+//let maxWeight = Car.maxWeight
+//let carWeight = Car.selfWeight
+//let totalWeight = car.totalWeight
+//
+//if maxWeight < totalWeight {
+//    print("You can't drive it because car is overloaded: \(totalWeight - maxWeight)")
+//} else {
+//    print("You can drive!")
+//}
 
 // 23 Ленивые свойства
 
@@ -433,18 +688,17 @@ missedCount = whatToDo(missed: false)(missedCount)
 
 
 // 25 Уровни доступа
-// 26 лиасы типов
-// 27 еречислени€ или энумы
-// 28 труктуры
-// 29 мпорт фреймворков или библиотек
-// 30 роверка типов и приведение типов
-// 31 ипы AnyObject и Any
+// 26 Алиасы типов
+// 27 Перечисления или энумы
+// 28 Структуры
+// 29 Импорт фреймворков или библиотек
+// 30 Проверка типов и приведение типов
+// 31 Типы AnyObject и Any
 // 32 ARC
-// 33 ARC в замыкани€х
-// 34 пциональные цепочки
-// 35 ќбработка ошибок и отложенные действи€
-// 36 —абскрипты
-// 37 –асширени€
-// 38 ѕротоколы
-// 39 ”ниверсальные шаблоны
-// 40 «аключение
+// 33 ARC в замыканиях
+// 34 Опциональные цепочки
+// 35 Обработка ошибок и отложенные действия
+// 36 Сабскрипты
+// 37 Расширения
+// 38 Протоколы
+// 39 Универсальные шаблоны
