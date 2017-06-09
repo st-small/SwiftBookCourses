@@ -682,23 +682,209 @@ import UIKit
 //}
 
 // 23 Ленивые свойства
-
+//func bigDataProcessingFunc() -> String {
+//    return "very long process"
+//}
+//
+//class Processing {
+//    let smallDataProcessing = "small data processing"
+//    let averageDataProcessing = "average data processing"
+//    lazy var bigDataProcessing = bigDataProcessingFunc()
+//}
+//
+//let process  = Processing()
+//process.bigDataProcessing
+//process
 
 // 24 Наблюдатели свойства
-
+//class SecretLabEmployee {
+//    var accessLevel = 0 {
+//        willSet {
+//            print("new boss is about to come")
+//            print("new access level is \(newValue)")
+//        }
+//        didSet {
+//            if accessLevel > 0 {
+//                accessToDB = true
+//            } else {
+//                accessToDB = false
+//            }
+//            print("new boss just come")
+//            print("last time I had access level \(oldValue)")
+//        }
+//    }
+//    
+//    var accessToDB = false
+//}
+//
+//let employee = SecretLabEmployee()
+//employee.accessLevel
+//employee.accessToDB
+//
+//employee.accessLevel =  1
+//employee.accessToDB
+//
+//employee.accessLevel =  2
+//employee.accessToDB
 
 // 25 Уровни доступа
+// public, private, internal
+
 // 26 Алиасы типов
+//typealias Meter = Int
+//let length: Meter = 50
+//let length1 = 20
+//
+//let sum: Meter = length + length1
+//
+//
+//typealias DoubleInteger = (Int, Int)
+//let someConstant: DoubleInteger = (1, 2)
+//
+//typealias DictionaryType = [String: Int]
+//var dictionary: DictionaryType = [:]
+//dictionary["Apartment123"] = 123
+//dictionary
+
 // 27 Перечисления или энумы
+//enum Movement: Int {
+//    case forward = 10
+//    case backward = 23
+//    case left = 101
+//    case right = 123
+//}
+//
+//let movementDirection = Movement.backward.rawValue
+//
+//enum Device {
+//    case iPad(color: String), iPhone
+//    
+//    var year: Int {
+//        switch self {
+//        case .iPhone: return 2007
+//        case .iPad(let color) where color == "black": return 2020
+//        case .iPad: return 2010
+//        }
+//    }
+//}
+//
+//let yearOfProduction = Device.iPad(color: "black").year
+//
+//enum Character {
+//    enum Weapon: Int {
+//        case sword = 4
+//        case wand = 1
+//        
+//        var damage: Int {
+//            return rawValue * 10
+//        }
+//    }
+//    
+//    enum CharacterType {
+//        case knight
+//        case mage
+//    }
+//}
+//
+//let characterWeapon = Character.Weapon.sword.damage
+//
+//indirect enum Lunch {
+//    case salad
+//    case soup
+//    case meal(Lunch, Lunch)
+//}
+//
+//let myLunch = Lunch.meal(.salad, .soup)
+
 // 28 Структуры
+//// simple structure/class
+//class Site {
+//    // stored properties
+//    var siteName  = "SwiftBook.ru"
+//    let visitsToday = 1000
+//    let visitsYesterday = 1000
+//    
+//    // computed properties
+//    var visitsTomorrow: Int {
+//        return (visitsToday + visitsYesterday) / 2
+//    }
+//    // lazy property
+//    lazy var someLazyProperty = 1 + 2
+//    
+//    func description() -> String {
+//        return "We had \(visitsYesterday) visitors yesterday. Today we have \(visitsToday) visitors. Tomorrow we will have about \(visitsTomorrow) visitors."
+//    }
+//}
+//
+////// simple structure/class
+////struct Site {
+////    // stored properties
+////    var siteName  = "SwiftBook.ru"
+////    let visitsToday = 1000
+////    let visitsYesterday = 1000
+////    
+////    // computed properties
+////    var visitsTomorrow: Int {
+////        return (visitsToday + visitsYesterday) / 2
+////    }
+////    // lazy property
+////    lazy var someLazyProperty = 1 + 2
+////    
+////    func description() -> String {
+////        return "We had \(visitsYesterday) visitors yesterday. Today we have \(visitsToday) visitors. Tomorrow we will have about \(visitsTomorrow) visitors."
+////    }
+////}
+//
+//let firstWebSite = Site()
+//
+////func changeSiteName(site: Site) -> Site {
+////    //var site = site
+////    site.siteName = "iphonecoder.ru"
+////    return site
+////}
+////
+////changeSiteName(site: firstWebSite)
+//firstWebSite.siteName
+//
+//// ===
+//
+//let secondWebSite = Site()
+//let thirdWebSite = firstWebSite
+//
+//if firstWebSite === thirdWebSite {
+//    print("===")
+//} else {
+//    print("not!")
+//}
+
 // 29 Импорт фреймворков или библиотек
+
+
 // 30 Проверка типов и приведение типов
+
+
 // 31 Типы AnyObject и Any
+
+
 // 32 ARC
+
+
 // 33 ARC в замыканиях
+
+
 // 34 Опциональные цепочки
+
+
 // 35 Обработка ошибок и отложенные действия
+
+
 // 36 Сабскрипты
+
+
 // 37 Расширения
+
+
 // 38 Протоколы
+
+
 // 39 Универсальные шаблоны
