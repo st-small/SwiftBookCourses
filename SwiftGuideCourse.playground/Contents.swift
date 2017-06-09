@@ -861,19 +861,278 @@ import UIKit
 
 
 // 30 Проверка типов и приведение типов
+//class Furniture {
+//    let material: String
+//    
+//    init(material: String) {
+//        self.material = material
+//    }
+//}
+//
+//class Bed: Furniture {
+//    let numberOfPlaces: Int
+//    
+//    init(numberOfPlaces: Int, material: String) {
+//        self.numberOfPlaces = numberOfPlaces
+//        super.init(material: material)
+//    }
+//}
+//
+//class Cupboard: Furniture {
+//    let numberOfShelves: Int
+//    
+//    init(numberOfShelves: Int, material: String) {
+//        self.numberOfShelves = numberOfShelves
+//        super.init(material: material)
+//    }
+//}
+//
+//var arrayOfFurniture = [Furniture]()
+//
+//arrayOfFurniture.append(Bed(numberOfPlaces: 2, material: "Wood"))
+//arrayOfFurniture.append(Bed(numberOfPlaces: 1, material: "Steel"))
+//arrayOfFurniture.append(Bed(numberOfPlaces: 2, material: "Wood"))
+//
+//arrayOfFurniture.append(Cupboard(numberOfShelves: 4, material: "Wood"))
+//arrayOfFurniture.append(Cupboard(numberOfShelves: 6, material: "Steel"))
+//arrayOfFurniture.append(Cupboard(numberOfShelves: 3, material: "Wood"))
+//arrayOfFurniture.append(Cupboard(numberOfShelves: 5, material: "Steel"))
+//
+//arrayOfFurniture
+//
+//var bed = 0
+//var cupboard = 0
+//
+////for item in arrayOfFurniture {
+////    if item is Bed {
+////        bed += 1
+////    } else {
+////        cupboard += 1
+////    }
+////}
+//
+//for item in arrayOfFurniture {
+////    if item is Bed {
+////        let bedForSure = item as! Bed
+////        bed += 1
+////    } else {
+////        cupboard += 1
+////    }
+//    
+//    if let bedForSure = item as? Bed {
+//        bed += 1
+//        bedForSure.numberOfPlaces
+//    }
+//}
+//
+//bed
+//cupboard
 
 
 // 31 Типы AnyObject и Any
-
+//class A {
+//    
+//}
+//
+//class B {
+//    
+//}
+//
+//class C {
+//    
+//}
+//
+//let a = A()
+//let b = A()
+//let c = A()
+//let d = B()
+//let e = C()
+//
+//struct D {
+//    
+//}
+//
+//let f = D()
+//
+//enum E {
+//    case a
+//    case b
+//}
+//
+//let g = E.b
+//
+//let array: [AnyObject] = [a, b, c, d, e]
+//let arrayTwo: [Any] = [a, b, c, d, e, f, g, true, "String", 0.95, 5 + 4]
+//
+//for i in arrayTwo {
+//    switch i {
+//    case let item as Int: print("this is Int")
+//    case let item as String: print("this is String")
+//    default: print("this is other type")
+//    }
+//}
 
 // 32 ARC
-
+//class Person {
+//    var dog: Dog?
+//    
+//    deinit {
+//        print("Person is free")
+//    }
+//}
+//
+//class Dog {
+//    unowned var person: Person
+//    
+//    init() {
+//        self.person = Person()
+//    }
+//    
+//    deinit {
+//        print("Dog is free")
+//    }
+//}
+//
+//let firstScope = true
+//let secondScope = true
+//
+////--------------------FIRST------------------------
+//if firstScope {
+//    
+//    let person = Person()
+//    let dog = Dog()
+//
+//    //--------------------SECOND------------------------
+//    if secondScope {
+//        
+//        person.dog = dog
+//        dog.person = person
+//        
+//        print("secondScope has ended")
+//    }
+//
+//    //--------------------SECOND ENDS------------------------
+//    
+//    print("firstScope has ended")
+//}
+//
+////--------------------FIRST ENDS------------------------
+//
+//print("finish")
 
 // 33 ARC в замыканиях
-
+//class Person {
+//    var dog: Dog?
+//    var closure2: (() -> ())?
+//    lazy var property: (Bool) -> (Bool) = { [unowned self] (param: Bool) -> Bool in
+//        print(self.dog)
+//        return true
+//    }
+//    
+//    init() {
+//        dog = Dog(person: self)
+//    }
+//
+//    deinit {
+//        print("Person is free")
+//    }
+//}
+//
+//class Dog {
+//    unowned var person: Person
+//
+//    init(person: Person) {
+//        self.person = person
+//    }
+//
+//    deinit {
+//        print("Dog is free")
+//    }
+//}
+//
+//let firstScope = true
+//let secondScope = true
+//
+//let closure1: () -> ()?
+//
+////--------------------FIRST------------------------
+//if firstScope {
+//    print("firstScope has STARTED<------------<------------<1")
+//    
+//    let person = Person()
+//    let dog = person.dog
+//
+////    closure1 = { [unowned person] in
+////        print(person)
+////    }
+//    
+////    person.closure2 = { [unowned person] in
+////        print(person)
+////    }
+//    
+//    person.property(true)
+//    
+//    print("firstScope has ENDED>-------------->------------>1")
+//}
+//
+////--------------------FIRST ENDS------------------------
+//
+//print("finish")
+//
+////var x = "a"
+////
+////let closure = { [x] () -> () in
+////    print(x)
+////}
+////
+////closure()
+////
+////x = "b"
+////
+////closure()
 
 // 34 Опциональные цепочки
-
+//class Person {
+//    let job: Job? = Job()
+//    let workers: [Worker]? = [Worker()]
+//}
+//
+//class Worker {
+//    let name = "Petya"
+//    
+//    func work() {
+//        print("I do some job")
+//    }
+//}
+//
+//class Job {
+//    let salary: Salary? = Salary()
+//}
+//
+//class Salary {
+//    let salary = 100_000
+//    
+//    func showSalary() -> String {
+//        return "\(salary)"
+//    }
+//}
+//
+//let person = Person()
+//if let job = person.job {
+//    if let salary = job.salary {
+//        salary.salary
+//    }
+//}
+//
+//if let job = person.job, let salary = job.salary {
+//    salary.salary
+//}
+//
+//let salary = person.job?.salary?.salary
+//
+//var workersArray = person.workers
+//workersArray?.append(Worker())
+//workersArray
 
 // 35 Обработка ошибок и отложенные действия
 
